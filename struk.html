@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struk Pembelian</title>
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .struk-container {
+        background: #1e1e1e;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+      h1 {
+        color: #ffb400;
+      }
+      .item {
+        margin: 15px 0;
+      }
+      .back-btn {
+        background-color: #ffb400;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .back-btn:hover {
+        background-color: #ff9500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="struk-container">
+      <h1>Struk Pembelian</h1>
+      <div class="item">
+        <strong>Judul Film:</strong> <span id="judul">-</span>
+      </div>
+      <div class="item">
+        <strong>Waktu Tayang:</strong> <span id="waktu">-</span>
+      </div>
+      <div class="item"><strong>Kursi:</strong> <span id="kursi">-</span></div>
+      <div class="item">
+        <strong>Total Bayar:</strong> Rp <span id="total">0</span>
+      </div>
+      <button class="back-btn" onclick="window.location.href='index.html'">
+        Kembali ke Beranda
+      </button>
+    </div>
+
+    <script>
+      function getParam(name) {
+        const url = new URLSearchParams(window.location.search);
+        return url.get(name);
+      }
+
+      document.getElementById("judul").textContent = getParam("judul") || "-";
+      document.getElementById("waktu").textContent = getParam("waktu") || "-";
+      document.getElementById("kursi").textContent = getParam("kursi") || "-";
+      document.getElementById("total").textContent = getParam("total") || "0";
+    </script>
+  </body>
+</html>
