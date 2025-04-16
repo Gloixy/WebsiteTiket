@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Film</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="form-detail">
+      <h1>Pemesanan</h1>
+      <p>You pressed the "Pesan Tiket" button to come here!</p>
+      <button onclick="goBackToPage1()">Go Back</button>
+
+      <h1 id="judul"></h1>
+      <img id="poster" src="" alt="Poster Film" width="50%" />
+      <p><strong>Genre:</strong> <span id="genre"></span></p>
+      <p><strong>Durasi:</strong> <span id="durasi"></span></p>
+      <p><strong>Sutradara:</strong> <span id="sutradara"></span></p>
+      <p><strong>Rating:</strong> <span id="rating"></span></p>
+      <p><strong>Jadwal:</strong> <span id="jadwal"></span></p>
+      <p><strong>Harga:</strong> Rp <span id="harga"></span></p>
+
+      <!-- New Buy Ticket Button -->
+      <button id="buyTicket">Beli Tiket</button>
+    </section>
+
+    <script>
+      function goBackToPage1() {
+        window.location.href = "index.html";
+      }
+
+      function getParameterByName(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      document.getElementById("judul").textContent =
+        getParameterByName("judul");
+      document.getElementById("poster").src = getParameterByName("poster");
+      document.getElementById("genre").textContent =
+        getParameterByName("genre");
+      document.getElementById("durasi").textContent =
+        getParameterByName("durasi");
+      document.getElementById("sutradara").textContent =
+        getParameterByName("sutradara");
+      document.getElementById("rating").textContent =
+        getParameterByName("rating");
+      document.getElementById("jadwal").textContent =
+        getParameterByName("jadwal");
+      document.getElementById("harga").textContent =
+        getParameterByName("harga");
+
+      // Redirect to payment.html with movie details when buying a ticket
+      document
+        .getElementById("buyTicket")
+        .addEventListener("click", function () {
+          const url = `payment.html?judul=${encodeURIComponent(
+            getParameterByName("judul")
+          )}&harga=${encodeURIComponent(
+            getParameterByName("harga")
+          )}&jadwal=${encodeURIComponent(getParameterByName("jadwal"))}`;
+          window.location.href = url;
+        });
+    </script>
+  </body>
+</html>
