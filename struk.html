@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Struk Pembelian</title>
+    <style>
+      body {
+        background: #f8f8f8;
+        font-family: "Courier New", monospace;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+      }
+
+      .struk {
+        background: #fff;
+        padding: 20px;
+        width: 320px;
+        border: 1px dashed #aaa;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .struk h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+
+      .line {
+        border-top: 1px dashed #000;
+        margin: 10px 0;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 20px;
+      }
+
+      .btn-kembali {
+        display: block;
+        text-align: center;
+        margin: 15px auto 0;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 4px;
+        width: fit-content;
+      }
+
+      .btn-kembali:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="struk">
+      <h2>TIM ID</h2>
+      <div class="line"></div>
+
+      <div class="item"><span>Judul Film</span><span id="judul">-</span></div>
+      <div class="item"><span>Waktu Tayang</span><span id="waktu">-</span></div>
+      <div class="item"><span>Kursi</span><span id="kursi">-</span></div>
+      <div class="item">
+        <span>Total Bayar</span><span id="total">Rp 0</span>
+      </div>
+
+      <div class="line"></div>
+      <div class="footer">Terima kasih telah memesan</div>
+
+      <!-- Tombol kembali -->
+      <a href="index.html" class="btn-kembali">Kembali ke Beranda</a>
+    </div>
+
+    <script>
+      const getParam = (key) =>
+        new URLSearchParams(window.location.search).get(key) || "-";
+      document.getElementById("judul").textContent = getParam("judul");
+      document.getElementById("waktu").textContent = getParam("waktu");
+      document.getElementById("kursi").textContent = getParam("kursi");
+      document.getElementById("total").textContent = "Rp " + getParam("total");
+    </script>
+  </body>
+</html>
